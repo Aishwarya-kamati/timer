@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="stopwatch">
+        <h1 id="displytime">00:00:00</h1>
+        <div class="btns">
+            <img src="image/stop.png" alt="">
+            <img src="image/start.png"  onclick="watchstart()">
+            <img src="image/reset.png" alt="">
+        </div>
+
+
+    </div>
+    <script>
+        let [seconds, minutes, hours] = [0, 0, 0];
+        let displytime = document.getElementById("displytime");
+        function stopwatch() {
+            seconds++;
+            if (seconds == 60) {
+                seconds = 0;
+            minutes++;
+            if (minutes == 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+
+            let h=hours<10?"0"+hours:hours;
+            let m=hours<10?"0"+minutes:minutes;
+            let s=hours<10?"0"+seconds:seconds;
+            displytime.innerHTML = hours + ":" + minutes + ":" + seconds;
+        }
+
+
+       
+        function watchstart() {
+            const  timer = setInterval(stopwatch, 1000);
+            
+            if (timer!== null) {
+                clearInterval(timer);
+            }
+          
+          
+        }
+    </script>
+</body>
+
+</html>
